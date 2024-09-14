@@ -36,5 +36,14 @@
   "ambient": "Ambiente",
   "whiteNoise": "Ruido blanco",
   "savedMixes": "Mezclas guardadas",
-  "appearance": "Apariencia"
+  "appearance": "Apariencia",
+  "birds": "Pájaros",
+  "forest": "Bosque",
+  "ocean": "Océano",
+  "rain": "Lluvia",
+  "stream": "Arroyo",
+  "wind": "Viento",
+  "fire": "Fuego",
+  "brownNoise": "Ruido marrón",
+  "pinkNoise": "Ruido rosa"
 }

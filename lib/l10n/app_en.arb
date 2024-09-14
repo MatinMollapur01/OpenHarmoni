@@ -36,5 +36,14 @@
   "nature": "Nature",
   "ambient": "Ambient",
   "whiteNoise": "White Noise",
-  "savedMixes": "Saved Mixes"
+  "savedMixes": "Saved Mixes",
+  "birds": "Birds",
+  "forest": "Forest",
+  "ocean": "Ocean",
+  "rain": "Rain",
+  "stream": "Stream",
+  "wind": "Wind",
+  "fire": "Fire",
+  "brownNoise": "Brown Noise",
+  "pinkNoise": "Pink Noise"
 }

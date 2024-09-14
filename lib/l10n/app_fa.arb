@@ -36,5 +36,14 @@
   "ambient": "محیطی",
   "whiteNoise": "نویز سفید",
   "savedMixes": "ترکیب‌های ذخیره شده",
-  "appearance": "ظاهر"
+  "appearance": "ظاهر",
+  "birds": "پرندگان",
+  "forest": "جنگل",
+  "ocean": "اقیانوس",
+  "rain": "باران",
+  "stream": "جریان آب",
+  "wind": "باد",
+  "fire": "آتش",
+  "brownNoise": "نویز قهوه‌ای",
+  "pinkNoise": "نویز صورتی"
 }

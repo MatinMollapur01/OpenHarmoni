@@ -299,7 +299,7 @@ class SoundTile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              sound.replaceAll('-', ' ').toUpperCase(),
+              _getSoundName(context, sound), // Use the localized sound name
               textAlign: TextAlign.center,
             ),
           ),
@@ -321,6 +321,33 @@ class SoundTile extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _getSoundName(BuildContext context, String sound) {
+    switch (sound) {
+      case 'birds':
+        return context.l10n.birds;
+      case 'forest':
+        return context.l10n.forest;
+      case 'ocean':
+        return context.l10n.ocean;
+      case 'rain':
+        return context.l10n.rain;
+      case 'stream':
+        return context.l10n.stream;
+      case 'wind':
+        return context.l10n.wind;
+      case 'fire':
+        return context.l10n.fire;
+      case 'brown-noise':
+        return context.l10n.brownNoise;
+      case 'pink-noise':
+        return context.l10n.pinkNoise;
+      case 'white-noise':
+        return context.l10n.whiteNoise;
+      default:
+        return sound;
+    }
   }
 }
 

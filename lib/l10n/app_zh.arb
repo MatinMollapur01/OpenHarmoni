@@ -36,5 +36,14 @@
   "ambient": "环境",
   "whiteNoise": "白噪音",
   "savedMixes": "已保存的混音",
-  "appearance": "外观"
+  "appearance": "外观",
+  "birds": "鸟鸣",
+  "forest": "森林",
+  "ocean": "海洋",
+  "rain": "雨声",
+  "stream": "溪流",
+  "wind": "风声",
+  "fire": "火焰",
+  "brownNoise": "棕色噪音",
+  "pinkNoise": "粉红噪音"
 }

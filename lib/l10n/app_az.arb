@@ -36,5 +36,14 @@
   "nature": "Təbiət",
   "ambient": "Mühit",
   "whiteNoise": "Ağ Səs-küy",
-  "savedMixes": "Saxlanmış Qarışıqlar"
+  "savedMixes": "Saxlanmış Qarışıqlar",
+  "birds": "Quşlar",
+  "forest": "Meşə",
+  "ocean": "Okean",
+  "rain": "Yağış",
+  "stream": "Axın",
+  "wind": "Külək",
+  "fire": "Od",
+  "brownNoise": "Qəhvəyi Səs-küy",
+  "pinkNoise": "Çəhrayı Səs-küy"
 }

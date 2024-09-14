@@ -36,5 +36,14 @@
   "ambient": "Ortam",
   "whiteNoise": "Beyaz Gürültü",
   "savedMixes": "Kaydedilmiş Karışımlar",
-  "appearance": "Görünüm"
+  "appearance": "Görünüm",
+  "birds": "Kuşlar",
+  "forest": "Orman",
+  "ocean": "Okyanus",
+  "rain": "Yağmur",
+  "stream": "Dere",
+  "wind": "Rüzgar",
+  "fire": "Ateş",
+  "brownNoise": "Kahverengi Gürültü",
+  "pinkNoise": "Pembe Gürültü"
 }

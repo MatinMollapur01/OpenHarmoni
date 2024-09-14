@@ -79,6 +79,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'OpenHarmoni',
           theme: ThemeData(
+            fontFamily: 'Kavivanar', // Apply the font here
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.deepPurple,
               brightness: Brightness.light,
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: const Color(0xFFD9D9D9),
           ),
           darkTheme: ThemeData(
+            fontFamily: 'Kavivanar', // Apply the font here
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.deepPurple,
               brightness: Brightness.dark,

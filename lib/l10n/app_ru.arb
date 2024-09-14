@@ -36,5 +36,14 @@
   "ambient": "Эмбиент",
   "whiteNoise": "Белый шум",
   "savedMixes": "Сохраненные миксы",
-  "appearance": "Внешний вид"
+  "appearance": "Внешний вид",
+  "birds": "Птицы",
+  "forest": "Лес",
+  "ocean": "Океан",
+  "rain": "Дождь",
+  "stream": "Ручей",
+  "wind": "Ветер",
+  "fire": "Огонь",
+  "brownNoise": "Коричневый шум",
+  "pinkNoise": "Розовый шум"
 }

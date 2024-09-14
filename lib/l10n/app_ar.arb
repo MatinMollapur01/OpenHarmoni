@@ -36,5 +36,14 @@
   "ambient": "المحيط",
   "whiteNoise": "الضوضاء البيضاء",
   "savedMixes": "المزيجات المحفوظة",
-  "appearance": "المظهر"
+  "appearance": "المظهر",
+  "birds": "الطيور",
+  "forest": "الغابة",
+  "ocean": "المحيط",
+  "rain": "المطر",
+  "stream": "الجدول",
+  "wind": "الرياح",
+  "fire": "النار",
+  "brownNoise": "الضوضاء البنية",
+  "pinkNoise": "الضوضاء الوردية"
 }
