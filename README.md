@@ -156,7 +156,7 @@ OpenHarmoni stands on the shoulders of giants. We'd like to thank:
 
 ## 📬 Contact
 
-Matin Mollapur - [@MatinMollapur](https://twitter.com/MatinMollapur) - matinmollapur01@proton.me
+Matin Mollapur - [@MatinMollapur](https://twitter.com/matin_mollapur) - matinmollapur01@proton.me
 
 Project Link: [https://github.com/MatinMollapur01/OpenHarmoni](https://github.com/MatinMollapur01/OpenHarmoni)
 
