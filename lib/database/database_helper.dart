@@ -28,6 +28,16 @@ class DatabaseHelper {
         mix_data TEXT
       )
     ''');
+
+    await db.execute('''
+      CREATE TABLE pomodoro_stats(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        date TEXT,
+        completed_pomodoros INTEGER,
+        total_work_time INTEGER,
+        total_break_time INTEGER
+      )
+    ''');
   }
 
   Future<int> insertSoundMix(String name, String mixData) async {
@@ -44,5 +54,47 @@ class DatabaseHelper {
   Future<int> deleteSoundMix(int id) async {
     final db = await database;
     return await db.delete('sound_mixes', where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<int> insertPomodoroStats(String date, int completedPomodoros, int totalWorkTime, int totalBreakTime) async {
+    final db = await database;
+    final data = {
+      'date': date,
+      'completed_pomodoros': completedPomodoros,
+      'total_work_time': totalWorkTime,
+      'total_break_time': totalBreakTime,
+    };
+    return await db.insert('pomodoro_stats', data);
+  }
+
+  Future<List<Map<String, dynamic>>> getPomodoroStats() async {
+    final db = await database;
+    return await db.query('pomodoro_stats', orderBy: 'date DESC');
+  }
+
+  Future<Map<String, dynamic>> getPomodoroStatsByDate(String date) async {
+    final db = await database;
+    final results = await db.query(
+      'pomodoro_stats',
+      where: 'date = ?',
+      whereArgs: [date],
+      limit: 1,
+    );
+    return results.isNotEmpty ? results.first : {};
+  }
+
+  Future<int> updatePomodoroStats(String date, int completedPomodoros, int totalWorkTime, int totalBreakTime) async {
+    final db = await database;
+    final data = {
+      'completed_pomodoros': completedPomodoros,
+      'total_work_time': totalWorkTime,
+      'total_break_time': totalBreakTime,
+    };
+    return await db.update(
+      'pomodoro_stats',
+      data,
+      where: 'date = ?',
+      whereArgs: [date],
+    );
   }
 }
