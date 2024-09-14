@@ -11,7 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
   cupertino_icons: ^1.0.8
   audioplayers: ^5.2.1
   provider: ^6.1.2
@@ -19,7 +21,6 @@ dependencies:
   sqflite: ^2.3.2
   path: ^1.8.3
   flutter_local_notifications: ^17.2.2
-  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -29,7 +30,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/sounds/
     - assets/notification_sounds/
+    - lib/l10n/app_az.arb  # Add this line

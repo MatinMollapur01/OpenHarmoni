@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'dart:async';
 import 'dart:math';
 import '../database/database_helper.dart';
+import '../main.dart'; // Import the file where the extension is defined
 
 class SoundCategory {
   final String name;
@@ -50,6 +51,7 @@ class SoundState extends ChangeNotifier {
         volumes[sound] = 0.5;
         playerStates[sound] = PlayerState.stopped;
         equalizers[sound] = Equalizer();
+        players[sound]!.setReleaseMode(ReleaseMode.loop); // Set to loop mode
         players[sound]!.onPlayerStateChanged.listen((state) {
           playerStates[sound] = state;
           notifyListeners();
@@ -208,12 +210,12 @@ class _SoundsScreenContent extends StatelessWidget {
       length: soundState.categories.length + 1,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Relaxing Sounds'),
+          title: Text(context.l10n.relaxingSounds), // Use the l10n extension method
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              ...soundState.categories.map((category) => Tab(text: category.name)),
-              const Tab(text: 'Saved Mixes'),
+              ...soundState.categories.map((category) => Tab(text: _getCategoryName(context, category.name))), // Use the correct category name
+              Tab(text: context.l10n.savedMixes), // Use the l10n extension method
             ],
           ),
         ),
@@ -239,6 +241,19 @@ class _SoundsScreenContent extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getCategoryName(BuildContext context, String categoryName) {
+    switch (categoryName) {
+      case 'Nature':
+        return context.l10n.nature;
+      case 'Ambient':
+        return context.l10n.ambient;
+      case 'White Noise':
+        return context.l10n.whiteNoise;
+      default:
+        return categoryName;
+    }
   }
 }
 
@@ -298,7 +313,7 @@ class SoundTile extends StatelessWidget {
           ),
           SoundVisualization(sound: sound),
           ExpansionTile(
-            title: const Text('Equalizer'),
+            title: Text(context.l10n.equalizer), // Use the l10n extension method
             children: [
               EqualizerControls(sound: sound),
             ],
@@ -321,9 +336,9 @@ class EqualizerControls extends StatelessWidget {
 
     return Column(
       children: [
-        _buildEqualizerSlider('Bass', equalizer.bass, (value) => soundState.setEqualizer(sound, 'bass', value)),
-        _buildEqualizerSlider('Mid', equalizer.mid, (value) => soundState.setEqualizer(sound, 'mid', value)),
-        _buildEqualizerSlider('Treble', equalizer.treble, (value) => soundState.setEqualizer(sound, 'treble', value)),
+        _buildEqualizerSlider(context.l10n.bass, equalizer.bass, (value) => soundState.setEqualizer(sound, 'bass', value)), // Use the l10n extension method
+        _buildEqualizerSlider(context.l10n.mid, equalizer.mid, (value) => soundState.setEqualizer(sound, 'mid', value)), // Use the l10n extension method
+        _buildEqualizerSlider(context.l10n.treble, equalizer.treble, (value) => soundState.setEqualizer(sound, 'treble', value)), // Use the l10n extension method
       ],
     );
   }
@@ -440,7 +455,7 @@ class SavedMixesView extends StatelessWidget {
               builder: (context) => SaveMixDialog(soundState: soundState),
             );
           },
-          child: const Text('Save Current Mix'),
+          child: Text(context.l10n.saveCurrentMix), // Use the l10n extension method
         ),
         Expanded(
           child: ListView.builder(
@@ -478,15 +493,15 @@ class _SaveMixDialogState extends State<SaveMixDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Save Mix'),
+      title: Text(context.l10n.saveMix), // Use the l10n extension method
       content: TextField(
         controller: _controller,
-        decoration: const InputDecoration(hintText: 'Enter mix name'),
+        decoration: InputDecoration(hintText: context.l10n.enterMixName), // Use the l10n extension method
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
+          child: Text(context.l10n.cancel), // Use the l10n extension method
         ),
         ElevatedButton(
           onPressed: () {
@@ -495,7 +510,7 @@ class _SaveMixDialogState extends State<SaveMixDialog> {
               Navigator.of(context).pop();
             }
           },
-          child: const Text('Save'),
+          child: Text(context.l10n.save), // Use the l10n extension method
         ),
       ],
     );

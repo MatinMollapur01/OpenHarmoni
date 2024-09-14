@@ -5,6 +5,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import '../database/database_helper.dart';
+import '../main.dart'; // Import the file where the extension is defined
 
 class PomodoroState extends ChangeNotifier {
   int workDuration = 25 * 60;
@@ -31,7 +32,7 @@ class PomodoroState extends ChangeNotifier {
         AndroidInitializationSettings('@mipmap/ic_launcher');
     const DarwinInitializationSettings initializationSettingsDarwin =
         DarwinInitializationSettings();
-    final InitializationSettings initializationSettings = const InitializationSettings(
+    const InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
     );
@@ -42,9 +43,13 @@ class PomodoroState extends ChangeNotifier {
     final today = DateFormat('yyyy-MM-dd').format(DateTime.now());
     final stats = await DatabaseHelper.instance.getPomodoroStatsByDate(today);
     if (stats.isNotEmpty) {
-      completedPomodoros = stats['completed_pomodoros'];
-      totalWorkTime = stats['total_work_time'];
-      totalBreakTime = stats['total_break_time'];
+      completedPomodoros = stats['completed_pomodoros'] ?? 0;
+      totalWorkTime = stats['total_work_time'] ?? 0;
+      totalBreakTime = stats['total_break_time'] ?? 0;
+    } else {
+      completedPomodoros = 0;
+      totalWorkTime = 0;
+      totalBreakTime = 0;
     }
     notifyListeners();
   }
@@ -69,7 +74,7 @@ class PomodoroState extends ChangeNotifier {
           _playNotificationSound();
           _showNotification();
         }
-        _saveTodayStats();
+        _saveTodayStats(); // Save stats every second
         notifyListeners();
       });
     }
@@ -137,7 +142,15 @@ class PomodoroState extends ChangeNotifier {
 
   Future<void> _saveTodayStats() async {
     final today = DateFormat('yyyy-MM-dd').format(DateTime.now());
-    await DatabaseHelper.instance.updatePomodoroStats(today, completedPomodoros, totalWorkTime, totalBreakTime);
+    final existingStats = await DatabaseHelper.instance.getPomodoroStatsByDate(today);
+  
+    if (existingStats.isEmpty) {
+      // Insert new record
+      await DatabaseHelper.instance.insertPomodoroStats(today, completedPomodoros, totalWorkTime, totalBreakTime);
+    } else {
+      // Update existing record
+      await DatabaseHelper.instance.updatePomodoroStats(today, completedPomodoros, totalWorkTime, totalBreakTime);
+    }
   }
 
   String get timeString {
@@ -168,7 +181,7 @@ class _PomodoroScreenContent extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pomodoro Timer'),
+        title: Text(context.l10n.pomodoroTimer), // Use the l10n extension method
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -177,7 +190,7 @@ class _PomodoroScreenContent extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               Text(
-                pomodoroState.isWorking ? 'Work Time' : 'Break Time',
+                pomodoroState.isWorking ? context.l10n.workTime : context.l10n.breakTime, // Use the l10n extension method
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: 20),
@@ -212,12 +225,12 @@ class _PomodoroScreenContent extends StatelessWidget {
                     onPressed: pomodoroState.isRunning
                         ? pomodoroState.pauseTimer
                         : pomodoroState.startTimer,
-                    child: Text(pomodoroState.isRunning ? 'Pause' : 'Start'),
+                    child: Text(pomodoroState.isRunning ? context.l10n.pause : context.l10n.start), // Use the l10n extension method
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton(
                     onPressed: pomodoroState.resetTimer,
-                    child: const Text('Reset'),
+                    child: Text(context.l10n.reset), // Use the l10n extension method
                   ),
                 ],
               ),
@@ -227,7 +240,7 @@ class _PomodoroScreenContent extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      const Text('Work Duration'),
+                      Text(context.l10n.workDuration), // Use the l10n extension method
                       DropdownButton<int>(
                         value: pomodoroState.workDuration ~/ 60,
                         items: [15, 25, 30, 45, 60]
@@ -246,7 +259,7 @@ class _PomodoroScreenContent extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      const Text('Break Duration'),
+                      Text(context.l10n.breakDuration), // Use the l10n extension method
                       DropdownButton<int>(
                         value: pomodoroState.breakDuration ~/ 60,
                         items: [5, 10, 15, 20]
@@ -266,13 +279,13 @@ class _PomodoroScreenContent extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              const Text('Notification Sounds', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text(context.l10n.notificationSounds, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)), // Use the l10n extension method
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
                     children: [
-                      const Text('Work End'),
+                      Text(context.l10n.workEnd), // Use the l10n extension method
                       DropdownButton<String>(
                         value: pomodoroState.selectedWorkSound,
                         items: ['bell.mp3', 'chime.mp3', 'gong.mp3']
@@ -291,7 +304,7 @@ class _PomodoroScreenContent extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      const Text('Break End'),
+                      Text(context.l10n.breakEnd), // Use the l10n extension method
                       DropdownButton<String>(
                         value: pomodoroState.selectedBreakSound,
                         items: ['bell.mp3', 'chime.mp3', 'gong.mp3']
@@ -311,10 +324,10 @@ class _PomodoroScreenContent extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              const Text('Today\'s Statistics', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              Text('Completed Pomodoros: ${pomodoroState.completedPomodoros}'),
-              Text('Total Work Time: ${(pomodoroState.totalWorkTime / 60).toStringAsFixed(1)} minutes'),
-              Text('Total Break Time: ${(pomodoroState.totalBreakTime / 60).toStringAsFixed(1)} minutes'),
+              Text(context.l10n.todayStatistics, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)), // Use the l10n extension method
+              Text('${context.l10n.completedPomodoros}: ${pomodoroState.completedPomodoros}'), // Use the l10n extension method
+              Text('${context.l10n.totalWorkTime}: ${(pomodoroState.totalWorkTime / 60).toStringAsFixed(1)} minutes'), // Use the l10n extension method
+              Text('${context.l10n.totalBreakTime}: ${(pomodoroState.totalBreakTime / 60).toStringAsFixed(1)} minutes'), // Use the l10n extension method
             ],
           ),
         ),
