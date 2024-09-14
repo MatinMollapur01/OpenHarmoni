@@ -3,7 +3,7 @@ description: "A Flutter application for relaxation and productivity using the Po
 
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+1  # Increment this as needed for future releases
 
 environment:
   sdk: ^3.5.1
