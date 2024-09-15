@@ -45,5 +45,21 @@
   "wind": "Rüzgar",
   "fire": "Ateş",
   "brownNoise": "Kahverengi Gürültü",
-  "pinkNoise": "Pembe Gürültü"
+  "pinkNoise": "Pembe Gürültü",
+  "myketAppStore": "Myket Uygulama Mağazası",
+  "@myketAppStore": {
+    "description": "Title for Myket App Store section"
+  },
+  "submitUserReview": "Kullanıcı Değerlendirmesi Gönder",
+  "@submitUserReview": {
+    "description": "Button to submit a user review"
+  },
+  "openAppPageInMyket": "Myket'te Uygulama Sayfasını Aç",
+  "@openAppPageInMyket": {
+    "description": "Button to open the app page in Myket"
+  },
+  "openDeveloperAppsPage": "Geliştirici Uygulamaları Sayfasını Aç",
+  "@openDeveloperAppsPage": {
+    "description": "Button to open the developer's apps page"
+  }
 }

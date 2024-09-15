@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
-// Remove this line if not needed
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -20,6 +19,19 @@ class SettingsScreen extends StatelessWidget {
 
 class _SettingsContent extends StatelessWidget {
   const _SettingsContent();
+
+  Future<void> _launchUrl(BuildContext context, String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not launch $url')),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +85,22 @@ class _SettingsContent extends StatelessWidget {
               );
             }).toList(),
           ),
+        ),
+        const Divider(),
+        ListTile(
+          title: Text(context.l10n.myketAppStore, style: const TextStyle(fontWeight: FontWeight.bold)),
+        ),
+        ListTile(
+          title: Text(context.l10n.submitUserReview),
+          onTap: () => _launchUrl(context, 'myket://comment/com.example.openharmoni'),
+        ),
+        ListTile(
+          title: Text(context.l10n.openAppPageInMyket),
+          onTap: () => _launchUrl(context, 'myket://details?id=com.example.openharmoni'),
+        ),
+        ListTile(
+          title: Text(context.l10n.openDeveloperAppsPage),
+          onTap: () => _launchUrl(context, 'myket://developer/dev-76064'),
         ),
       ],
     );

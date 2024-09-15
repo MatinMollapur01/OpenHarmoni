@@ -45,5 +45,21 @@
   "wind": "风声",
   "fire": "火焰",
   "brownNoise": "棕色噪音",
-  "pinkNoise": "粉红噪音"
+  "pinkNoise": "粉红噪音",
+  "myketAppStore": "Myket应用商店",
+  "@myketAppStore": {
+    "description": "Title for Myket App Store section"
+  },
+  "submitUserReview": "提交用户评价",
+  "@submitUserReview": {
+    "description": "Button to submit a user review"
+  },
+  "openAppPageInMyket": "在Myket中打开应用页面",
+  "@openAppPageInMyket": {
+    "description": "Button to open the app page in Myket"
+  },
+  "openDeveloperAppsPage": "打开开发者应用页面",
+  "@openDeveloperAppsPage": {
+    "description": "Button to open the developer's apps page"
+  }
 }

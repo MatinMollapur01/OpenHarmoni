@@ -45,5 +45,21 @@
   "wind": "Külək",
   "fire": "Od",
   "brownNoise": "Qəhvəyi Səs-küy",
-  "pinkNoise": "Çəhrayı Səs-küy"
+  "pinkNoise": "Çəhrayı Səs-küy",
+  "myketAppStore": "Myket Tətbiq Mağazası",
+  "@myketAppStore": {
+    "description": "Title for Myket App Store section"
+  },
+  "submitUserReview": "İstifadəçi Rəyini Göndər",
+  "@submitUserReview": {
+    "description": "Button to submit a user review"
+  },
+  "openAppPageInMyket": "Tətbiq Səhifəsini Myket-də Aç",
+  "@openAppPageInMyket": {
+    "description": "Button to open the app page in Myket"
+  },
+  "openDeveloperAppsPage": "Tərtibatçının Tətbiqlər Səhifəsini Aç",
+  "@openDeveloperAppsPage": {
+    "description": "Button to open the developer's apps page"
+  }
 }

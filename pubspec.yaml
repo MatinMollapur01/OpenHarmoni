@@ -3,7 +3,7 @@ description: "A Flutter application for relaxation and productivity using the Po
 
 publish_to: 'none'
 
-version: 1.0.0+1  # Increment this as needed for future releases
+version: 1.0.1+2  # Increment this as needed for future releases
 
 environment:
   sdk: ^3.5.1
@@ -21,6 +21,7 @@ dependencies:
   sqflite: ^2.3.2
   path: ^1.8.3
   flutter_local_notifications: ^17.2.2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:

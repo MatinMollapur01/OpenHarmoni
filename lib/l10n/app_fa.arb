@@ -45,5 +45,21 @@
   "wind": "باد",
   "fire": "آتش",
   "brownNoise": "نویز قهوه‌ای",
-  "pinkNoise": "نویز صورتی"
+  "pinkNoise": "نویز صورتی",
+  "myketAppStore": "فروشگاه اپلیکیشن مایکت",
+  "@myketAppStore": {
+    "description": "Title for Myket App Store section"
+  },
+  "submitUserReview": "ارسال نظر کاربر",
+  "@submitUserReview": {
+    "description": "Button to submit a user review"
+  },
+  "openAppPageInMyket": "باز کردن صفحه برنامه در مایکت",
+  "@openAppPageInMyket": {
+    "description": "Button to open the app page in Myket"
+  },
+  "openDeveloperAppsPage": "باز کردن صفحه برنامه‌های توسعه‌دهنده",
+  "@openDeveloperAppsPage": {
+    "description": "Button to open the developer's apps page"
+  }
 }

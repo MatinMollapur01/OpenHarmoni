@@ -45,5 +45,21 @@
   "wind": "Viento",
   "fire": "Fuego",
   "brownNoise": "Ruido marrón",
-  "pinkNoise": "Ruido rosa"
+  "pinkNoise": "Ruido rosa",
+  "myketAppStore": "Tienda de aplicaciones Myket",
+  "@myketAppStore": {
+    "description": "Title for Myket App Store section"
+  },
+  "submitUserReview": "Enviar reseña de usuario",
+  "@submitUserReview": {
+    "description": "Button to submit a user review"
+  },
+  "openAppPageInMyket": "Abrir página de la aplicación en Myket",
+  "@openAppPageInMyket": {
+    "description": "Button to open the app page in Myket"
+  },
+  "openDeveloperAppsPage": "Abrir página de aplicaciones del desarrollador",
+  "@openDeveloperAppsPage": {
+    "description": "Button to open the developer's apps page"
+  }
 }

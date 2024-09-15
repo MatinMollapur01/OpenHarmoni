@@ -45,5 +45,21 @@
   "wind": "Ветер",
   "fire": "Огонь",
   "brownNoise": "Коричневый шум",
-  "pinkNoise": "Розовый шум"
+  "pinkNoise": "Розовый шум",
+  "myketAppStore": "Магазин приложений Myket",
+  "@myketAppStore": {
+    "description": "Title for Myket App Store section"
+  },
+  "submitUserReview": "Отправить отзыв пользователя",
+  "@submitUserReview": {
+    "description": "Button to submit a user review"
+  },
+  "openAppPageInMyket": "Открыть страницу приложения в Myket",
+  "@openAppPageInMyket": {
+    "description": "Button to open the app page in Myket"
+  },
+  "openDeveloperAppsPage": "Открыть страницу приложений разработчика",
+  "@openDeveloperAppsPage": {
+    "description": "Button to open the developer's apps page"
+  }
 }
